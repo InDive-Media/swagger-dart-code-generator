@@ -51,6 +51,7 @@ void main() {
       expect(result, contains('Future<chopper.Response<CarModel>> carsPost'));
       expect(result,
           contains('Future<chopper.Response<CarModel>> carsMultipartPost'));
+      expect(result, contains('Future<chopper.Response<Map<String,dynamic>>> carsOneMoreRequestBodyReturningMapPut'));
     });
   });
 }

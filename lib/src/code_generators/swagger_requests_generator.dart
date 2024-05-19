@@ -118,7 +118,7 @@ class SwaggerRequestsGenerator extends SwaggerGeneratorBase {
         ..optionalParameters.add(Parameter(
           (p) => p
             ..named = true
-            ..type = Reference('Iterable<dynamic>?')
+            ..type = Reference('List<Interceptor>?')
             ..name = 'interceptors',
         ))
         ..body = Code(body),
@@ -1158,6 +1158,10 @@ class SwaggerRequestsGenerator extends SwaggerGeneratorBase {
       }
 
       return _mapParameterName(mappedArrayType, '', modelPostfix).asList();
+    }
+
+    if (responseType == kObject && swaggerResponse.schema?.hasAdditionalProperties == true) {
+      return kMapStringDynamic;
     }
 
     return kBasicTypesMap[responseType] ?? responseType + modelPostfix;

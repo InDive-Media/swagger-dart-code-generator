@@ -769,6 +769,36 @@ const carsService = '''
                     }
                 }
             }
+        },
+        "/cars/oneMoreRequestBodyReturningMap": {
+            "put": {
+                "summary": "Sends car to server",
+                "requestBody": {
+                    "description": "Car model",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarModelSimple"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
